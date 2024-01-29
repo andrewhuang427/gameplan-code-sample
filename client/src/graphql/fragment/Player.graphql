@@ -1,0 +1,7 @@
+fragment Player on GraphQLPlayer {
+  firstName
+  lastName
+  ageGroup
+  playerContactEmail
+  playerContactPhone
+}

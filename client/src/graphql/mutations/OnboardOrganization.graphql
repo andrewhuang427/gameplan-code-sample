@@ -1,0 +1,5 @@
+mutation OnboardOrganization($args: CreateOrganizationArgs!) {
+  onboardOrganization(args: $args) {
+    ...Organization
+  }
+}

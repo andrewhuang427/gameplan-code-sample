@@ -1,0 +1,5 @@
+mutation RemovePaymentMethod($args: RemovePaymentMethodArgs!) {
+  removePaymentMethod(args: $args) {
+    ...PaymentMethod
+  }
+}

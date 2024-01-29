@@ -1,0 +1,5 @@
+mutation UpdateTournament($args: UpdateTournamentArgs!) {
+  updateTournament(args: $args) {
+    ...Tournament
+  }
+}

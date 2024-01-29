@@ -1,0 +1,5 @@
+mutation UpdateCamp($args: UpdateCampArgs!) {
+  updateCamp(args: $args) {
+    ...Camp
+  }
+}

@@ -1,0 +1,5 @@
+mutation CreateRegistration($args: CreateRegistrationArgs!) {
+  createRegistration(args: $args) {
+    ...TournamentRegistration
+  }
+}

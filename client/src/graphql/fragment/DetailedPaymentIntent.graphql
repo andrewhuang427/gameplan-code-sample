@@ -1,0 +1,10 @@
+fragment DetailedPaymentIntent on GraphQLDetailedPaymentIntent {
+  paymentIntentId
+  eventName
+  charge {
+    ...Charge
+  }
+  paymentMethod {
+    ...PaymentMethod
+  }
+}

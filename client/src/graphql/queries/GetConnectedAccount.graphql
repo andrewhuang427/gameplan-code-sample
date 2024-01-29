@@ -1,0 +1,6 @@
+query GetConnectedAccount($args: GetConnectedAccountArgs!) {
+  getConnectedAccount(args: $args) {
+    id
+    isEnabled
+  }
+}

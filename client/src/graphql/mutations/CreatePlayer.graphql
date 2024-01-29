@@ -1,0 +1,5 @@
+mutation CreatePlayer($args: CreatePlayerArgs!) {
+  createPlayer(args: $args) {
+    ...Player
+  }
+}

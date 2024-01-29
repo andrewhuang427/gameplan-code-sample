@@ -1,0 +1,5 @@
+mutation CreateTeam($args: CreateTeamArgs!) {
+  createTeam(args: $args) {
+    ...Team
+  }
+}

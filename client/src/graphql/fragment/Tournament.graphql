@@ -1,0 +1,13 @@
+fragment Tournament on GraphQLTournament {
+  id
+  tournamentName
+  tournamentAddress
+  cost
+  sport
+  ageGroup
+  teamMaximum
+  gameMinimum
+  startDate
+  endDate
+  registrationCount
+}

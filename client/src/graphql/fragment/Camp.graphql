@@ -1,0 +1,14 @@
+fragment Camp on GraphQLCamp {
+  id
+  campName
+  campAddress
+  cost
+  sport
+  ageGroup
+  playerMaximum
+  startDate
+  endDate
+  recurrencePattern
+  recurrenceDetail
+  registrationCount
+}

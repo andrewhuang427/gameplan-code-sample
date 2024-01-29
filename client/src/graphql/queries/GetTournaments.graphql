@@ -1,0 +1,5 @@
+query GetTournaments {
+  getTournaments {
+    ...Tournament
+  }
+}

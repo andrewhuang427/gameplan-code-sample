@@ -1,0 +1,5 @@
+query GetTeams($args: GetTeamsArgs!) {
+  getTeams(args: $args) {
+    ...Team
+  }
+}

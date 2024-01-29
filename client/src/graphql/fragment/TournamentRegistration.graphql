@@ -1,0 +1,12 @@
+fragment TournamentRegistration on GraphQLTournamentRegistration {
+  id
+  createdAt
+  teamId
+  tournamentId
+  team {
+    ...Team
+  }
+  tournament {
+    ...Tournament
+  }
+}

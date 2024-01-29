@@ -1,0 +1,10 @@
+mutation SetupRegistration($args: SetupRegistrationArgs!) {
+  setupRegistration(args: $args) {
+    setupIntent {
+      ...SetupIntent
+    }
+    paymentIntent {
+      ...PaymentIntent
+    }
+  }
+}

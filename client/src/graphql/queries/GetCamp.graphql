@@ -1,0 +1,5 @@
+query GetCamp($args: GetCampArgs!) {
+  getCamp(args: $args) {
+    ...Camp
+  }
+}

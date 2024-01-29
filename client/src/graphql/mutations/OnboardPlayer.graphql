@@ -1,0 +1,5 @@
+mutation OnboardPlayer($args: CreatePlayerArgs!) {
+  onboardPlayer(args: $args) {
+    ...Player
+  }
+}

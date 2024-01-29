@@ -1,0 +1,5 @@
+mutation OnboardTeam($args: CreateTeamArgs!) {
+  onboardTeam(args: $args) {
+    ...Team
+  }
+}

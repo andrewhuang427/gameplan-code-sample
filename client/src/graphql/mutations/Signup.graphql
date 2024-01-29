@@ -1,0 +1,8 @@
+mutation Signup($args: SignupArgs!) {
+  signup(args: $args) {
+    token
+    user {
+      ...User
+    }
+  }
+}

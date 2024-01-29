@@ -1,0 +1,8 @@
+mutation Login($args: LoginArgs!) {
+  login(args: $args) {
+    token
+    user {
+      ...User
+    }
+  }
+}

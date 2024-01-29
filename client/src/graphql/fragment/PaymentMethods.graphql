@@ -1,0 +1,11 @@
+fragment PaymentMethod on GraphQLPaymentMethod {
+  id
+  card {
+    brand
+    country
+    expiryMonth
+    expiryYear
+    funding
+    lastFour
+  }
+}

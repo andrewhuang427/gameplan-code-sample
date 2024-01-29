@@ -1,0 +1,5 @@
+mutation CreateCamp($args: CreateCampArgs!) {
+  createCamp(args: $args) {
+    ...Camp
+  }
+}

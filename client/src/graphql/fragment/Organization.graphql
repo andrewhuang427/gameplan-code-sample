@@ -1,0 +1,6 @@
+fragment Organization on GraphQLOrganization {
+  id
+  name
+  sport
+  isStripeConnectedAccountOnboardingComplete
+}

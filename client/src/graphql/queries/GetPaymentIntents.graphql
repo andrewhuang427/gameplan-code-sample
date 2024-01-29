@@ -1,0 +1,5 @@
+query GetPaymentIntents($args: GetPaymentIntentsArgs!) {
+  getPaymentIntents(args: $args) {
+    ...DetailedPaymentIntent
+  }
+}

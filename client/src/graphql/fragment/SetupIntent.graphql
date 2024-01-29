@@ -1,0 +1,4 @@
+fragment SetupIntent on GraphQLSetupIntent {
+  id
+  clientSecret
+}

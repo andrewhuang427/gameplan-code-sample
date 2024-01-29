@@ -1,0 +1,5 @@
+query GetTournament($args: GetTournamentArgs!) {
+  getTournament(args: $args) {
+    ...Tournament
+  }
+}

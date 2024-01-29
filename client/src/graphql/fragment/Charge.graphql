@@ -1,0 +1,7 @@
+fragment Charge on GraphQLCharge {
+  id
+  amount
+  applicationFeeAmount
+  receiptUrl
+  created
+}

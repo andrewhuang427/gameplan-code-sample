@@ -1,0 +1,5 @@
+mutation OnboardOrganizationToStripe($args: OnboardOrganizationToStripeArgs!) {
+  onboardOrganizationToStripe(args: $args) {
+    url
+  }
+}

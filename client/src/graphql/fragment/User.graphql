@@ -1,0 +1,7 @@
+fragment User on GraphQLUser {
+  id
+  name
+  email
+  type
+  isOnboarded
+}

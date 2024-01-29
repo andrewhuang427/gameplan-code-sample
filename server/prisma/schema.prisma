@@ -1,0 +1,153 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ******************** User Associations ********************
+
+model Organization {
+  id                                         Int          @id @default(autoincrement())
+  name                                       String
+  sport                                      SportType
+  address                                    String?
+  tournaments                                Tournament[]
+  camps                                      Camp[]
+  stripeConnectedAccountId                   String?
+  isStripeConnectedAccountOnboardingComplete Boolean      @default(false)
+  User                                       User         @relation(fields: [userId], references: [id])
+  userId                                     Int
+}
+
+model Team {
+  id                        Int                      @id @default(autoincrement())
+  sport                     SportType
+  teamName                  String
+  teamCity                  String
+  teamState                 String
+  teamPrimaryContactName    String
+  teamPrimaryContactPhone   String
+  teamPrimaryContactEmail   String
+  teamSecondaryContactName  String?
+  teamSecondaryContactPhone String?
+  teamSecondaryContactEmail String?
+  tournamentRegistrations   TournamentRegistration[]
+  user                      User                     @relation(fields: [userId], references: [id])
+  userId                    Int
+}
+
+model Player {
+  id                 Int                @id @default(autoincrement())
+  firstName          String
+  lastName           String
+  ageGroup           Int
+  playerContactEmail String
+  playerContactPhone String
+  user               User               @relation(fields: [userId], references: [id])
+  userId             Int
+  registrations      CampRegistration[]
+}
+
+// ******************** Organization Events ********************
+
+model Tournament {
+  id                Int                      @id @default(autoincrement())
+  tournamentAddress String
+  tournamentName    String
+  cost              Int
+  sport             SportType
+  ageGroup          Int
+  gameMinimum       Int
+  teamMaximum       Int
+  startDate         DateTime
+  endDate           DateTime
+  createdAt         DateTime                 @default(now())
+  organization      Organization             @relation(fields: [organizationId], references: [id])
+  organizationId    Int
+  registrations     TournamentRegistration[]
+}
+
+model TournamentRegistration {
+  id                    Int        @id @default(autoincrement())
+  stripePaymentIntentId String
+  createdAt             DateTime   @default(now())
+  tournament            Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId          Int
+  team                  Team       @relation(fields: [teamId], references: [id])
+  teamId                Int
+
+  @@unique([tournamentId, teamId], name: "registrationIdentifier")
+}
+
+// ******************** Camps ********************
+
+model Camp {
+  id                Int                @id @default(autoincrement())
+  campName          String
+  campAddress       String
+  cost              Int
+  sport             SportType
+  ageGroup          Int
+  playerMaximum     Int
+  recurrencePattern RecurrencePattern  @default(ONE_TIME)
+  recurrenceDetail  String
+  startDate         DateTime
+  endDate           DateTime
+  organization      Organization       @relation(fields: [organizationId], references: [id])
+  organizationId    Int
+  registrations     CampRegistration[]
+}
+
+model CampRegistration {
+  id                    Int      @id @default(autoincrement())
+  createdAt             DateTime @default(now())
+  stripePaymentIntentId String
+  Camp                  Camp?    @relation(fields: [campId], references: [id])
+  campId                Int?
+  Player                Player?  @relation(fields: [playerId], references: [id])
+  playerId              Int?
+
+  @@unique([campId, playerId], name: "campRegistrationIdentifier")
+}
+
+// ******************** User ********************
+
+model User {
+  id               Int            @id @default(autoincrement())
+  name             String
+  email            String         @unique
+  password         String
+  type             UserType?
+  isOnboarded      Boolean
+  stripeCustomerId String?        @unique
+  organizations    Organization[]
+  teams            Team[]
+  players          Player[]
+}
+
+// ******************** Enums ********************
+
+enum UserType {
+  TEAM
+  ORGANIZATION
+  PLAYER
+}
+
+enum SportType {
+  BASEBALL
+  SOCCER
+  BASKETBALL
+}
+
+enum RecurrencePattern {
+  ONE_TIME
+  WEEKLY
+  BI_WEEKLY
+  MONTHLY
+}

@@ -1,0 +1,4 @@
+fragment PaymentIntent on GraphQLPaymentIntent {
+  id
+  clientSecret
+}

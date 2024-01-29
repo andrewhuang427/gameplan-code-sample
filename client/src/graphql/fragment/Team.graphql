@@ -1,0 +1,9 @@
+fragment Team on GraphQLTeam {
+  id
+  teamName
+  teamCity
+  teamState
+  teamPrimaryContactEmail
+  teamPrimaryContactName
+  teamPrimaryContactPhone
+}
